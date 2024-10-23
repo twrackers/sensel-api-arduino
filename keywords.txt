@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map for sensel-api-arduino
+# Syntax Coloring Map for Sensel
 #######################################
 
 #######################################
