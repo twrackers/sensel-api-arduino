@@ -22,6 +22,8 @@
 * SOFTWARE.
 ******************************************************************************************/
 
+#include <Arduino.h>
+
 #include "sensel.h"
 #include "sensel_register_map.h"
 
@@ -30,6 +32,34 @@ byte rx_buf[SENSEL_RX_BUFFER_SIZE];
 
 //Counter for RX buffer
 unsigned int counter = 0;
+
+//Convert 4 bytes to a unsigned long
+unsigned long _convertBytesToU32(byte b0, byte b1, byte b2, byte b3)
+{
+  return ((((unsigned long)b3) & 0xff) << 24) | ((((unsigned long)b2) & 0xff) << 16) | ((((unsigned long)b1) & 0xff) << 8) | (((unsigned long)b0) & 0xff);
+}
+
+//Convert 2 bytes to an unsigned int
+unsigned int _convertBytesToU16(byte b0, byte b1)
+{
+  return ((((unsigned int)b1) & 0xff) << 8) | (((unsigned int)b0) & 0xff);
+}
+
+//Convert 2 bytes to a signed int
+int _convertBytesToS16(byte b0, byte b1)
+{
+  return ((((int)b1)) << 8) | (((int)b0) & 0xff);
+}
+
+//Flush the SenselSerial of all data
+void _senselFlush()
+{
+  while(SenselSerial.available() > 0) {
+    SenselSerial.read();
+  delay(1);
+  }
+  SenselSerial.flush();
+}
 
 //Open Sensel device on SenselSerial
 void senselOpen()
@@ -105,34 +135,6 @@ void senselReadReg(byte addr, byte sizeVar, byte* buf)
   unsigned int resp_size = _convertBytesToU16(rx_buf[2], rx_buf[3]);
   SenselSerial.readBytes(buf, resp_size);
   SenselSerial.readBytes(&checksum, 1);
-}
-
-//Convert 4 bytes to a unsigned long
-unsigned long _convertBytesToU32(byte b0, byte b1, byte b2, byte b3)
-{
-  return ((((unsigned long)b3) & 0xff) << 24) | ((((unsigned long)b2) & 0xff) << 16) | ((((unsigned long)b1) & 0xff) << 8) | (((unsigned long)b0) & 0xff);
-}
-
-//Convert 2 bytes to an unsigned int
-unsigned int _convertBytesToU16(byte b0, byte b1)
-{
-  return ((((unsigned int)b1) & 0xff) << 8) | (((unsigned int)b0) & 0xff);
-}
-
-//Convert 2 bytes to a signed int
-int _convertBytesToS16(byte b0, byte b1)
-{
-  return ((((int)b1)) << 8) | (((int)b0) & 0xff);
-}
-
-//Flush the SenselSerial of all data
-void _senselFlush()
-{
-  while(SenselSerial.available() > 0) {
-    SenselSerial.read();
-  delay(1);
-  }
-  SenselSerial.flush();
 }
 
 //Read contact frame data from SenselSerial.

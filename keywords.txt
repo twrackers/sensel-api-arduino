@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring Map for sensel-api-arduino
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SenselContact	KEYWORD1
+SenselFrame	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+senselOpen	KEYWORD2
+senselSetFrameContent	KEYWORD2
+senselStartScanning	KEYWORD2
+senselStopScanning	KEYWORD2
+senselReadAvailable	KEYWORD2
+senselWriteReg	KEYWORD2
+senselReadReg	KEYWORD2
+senselGetFrame	KEYWORD2
+senselPrintFrame	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+SENSEL_REG_CONTACTS_FLAG	LITERAL1
+SENSEL_PT_READ_ACK	LITERAL1
+SENSEL_PT_RVS_ACK	LITERAL1
+SENSEL_PT_WRITE_ACK	LITERAL1
+SENSEL_CONTACT_TYPE_INVALID	LITERAL1
+SENSEL_CONTACT_TYPE_START	LITERAL1
+SENSEL_CONTACT_TYPE_MOVE	LITERAL1
+SENSEL_CONTACT_TYPE_END	LITERAL1

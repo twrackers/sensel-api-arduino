@@ -72,4 +72,14 @@ const byte SENSEL_CONTACT_TYPE_START = 1;
 const byte SENSEL_CONTACT_TYPE_MOVE = 2;
 const byte SENSEL_CONTACT_TYPE_END = 3;
 
+void senselOpen();
+void senselSetFrameContent(byte content);
+void senselStartScanning();
+void senselStopScanning();
+void senselReadAvailable();
+void senselWriteReg(byte addr, byte sizeVar, byte data);
+void senselReadReg(byte addr, byte sizeVar, byte* buf);
+void senselGetFrame(SenselFrame *frame);
+void senselPrintFrame(SenselFrame *frame);
+
 #endif
