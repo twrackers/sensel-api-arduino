@@ -20,6 +20,6 @@ Arduino-type devices which do have hardware serial (usually called **Serial1** i
 * Arduino Micro (tested)
 * Arduino R4 Minima (tested)
 * Arduino R4 WiFi
-* Arduino DUE
+* Arduino Due
 * Adafruit Itsy Bitsy 32u4, 5V 16MHz version (tested)
 * Adafruit Itsy Bitsy 32u4, 3V 8MHz version
