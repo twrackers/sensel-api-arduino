@@ -17,8 +17,8 @@ The Sensel Hacker Cable should be connected to a Hardware Serial on the Arduino 
 Arduino-type devices which do have hardware serial (usually called **Serial1** in the code) include:
 
 * Arduino MEGA 2560
-* Arduino Micro
-* Arduino R4 Minima
+* Arduino Micro (tested)
+* Arduino R4 Minima (tested)
 * Arduino R4 WiFi
 * Arduino DUE
 * Adafruit Itsy Bitsy 32u4, 5V 16MHz version (tested)
